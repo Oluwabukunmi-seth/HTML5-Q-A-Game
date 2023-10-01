@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Question and Answer Game</title>
+    <link rel="stylesheet" href="css/styles.css"> <!-- Include your CSS file -->
+</head>
+<body>
+    <div class="game-container">
+        <h1>Question and Answer Game</h1>
+
+        <!-- Display Question -->
+        <div id="question-container">
+            <p id="question-text">Loading question...</p>
+        </div>
+
+        <!-- Display Answer Choices -->
+        <div id="answers-container">
+            <button class="answer-button" id="answer-1">Loading answer 1...</button>
+            <button class="answer-button" id="answer-2">Loading answer 2...</button>
+            <button class="answer-button" id="answer-3">Loading answer 3...</button>
+            <button class="answer-button" id="answer-4">Loading answer 4...</button>
+        </div>
+
+        <!-- Display Result -->
+        <div id="result-container">
+            <p id="result-text"></p>
+        </div>
+
+        <!-- Display Next Button (to proceed to the next question) -->
+        <button id="next-button" style="display: none;">Next Question</button>
+    </div>
+
+    <!-- Include your JavaScript files -->
+    <script src="js/utilities.js"></script>
+    <script src="js/game.js"></script>
+
+    <script>
+        // JavaScript code to load questions and handle user interactions
+        // Example:
+        
+        // Fetch questions data from an XML source
+        fetch('xml/questions.xml')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text(); // Parse the XML text
+            })
+            .then(data => {
+                // Create a DOMParser to parse the XML
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(data, 'text/xml');
+                
+                // Extract questions from the XML
+                const questions = Array.from(xmlDoc.querySelectorAll('question')).map(questionNode => {
+                    return {
+                        questionText: questionNode.querySelector('questionText').textContent,
+                        answers: Array.from(questionNode.querySelectorAll('answer')).map(answerNode => answerNode.textContent),
+                        correctAnswer: questionNode.querySelector('correctAnswer').textContent
+                    };
+                });
+                
+                // Initialize your game logic, e.g., startGame(questions);
+                startGame(questions);
+            })
+            .catch(error => {
+                console.error('There was a problem loading questions:', error);
+            });
+
+        // Your game logic functions
+        function startGame(questions) {
+            let currentQuestionIndex = 0;
+            let score = 0;
+
+            // Reference to HTML elements
+            const questionTextElement = document.getElementById('question-text');
+            const answerButtons = document.querySelectorAll('.answer-button');
+            const resultTextElement = document.getElementById('result-text');
+            const nextButton = document.getElementById('next-button');
+
+            // Function to display a question
+            function displayQuestion() {
+                const currentQuestion = questions[currentQuestionIndex];
+
+                // Update question text
+                questionTextElement.textContent = currentQuestion.questionText;
+
+                // Update answer choices
+                for (let i = 0; i < 4; i++) {
+                    answerButtons[i].textContent = currentQuestion.answers[i];
+                }
+            }
+
+            // Function to handle user's answer selection
+            function handleAnswerClick(event) {
+                const selectedAnswer = event.target.textContent;
+                const currentQuestion = questions[currentQuestionIndex];
+
+                if (selectedAnswer === currentQuestion.correctAnswer) {
+                    // Correct answer
+                    score++;
+                    resultTextElement.textContent = 'Correct!';
+                } else {
+                    // Wrong answer
+                    resultTextElement.textContent = 'Wrong!';
+                }
+
+                // Show the Next Question button
+                nextButton.style.display = 'block';
+
+                // Disable answer buttons to prevent multiple clicks
+                answerButtons.forEach(button => {
+                    button.removeEventListener('click', handleAnswerClick);
+                });
+            }
+
+            // Function to proceed to the next question
+            function nextQuestion() {
+                currentQuestionIndex++;
+
+                if (currentQuestionIndex < questions.length) {
+                    // Display the next question
+                    displayQuestion();
+
+                    // Clear result text and hide Next Question button
+                    resultTextElement.textContent = '';
+                    nextButton.style.display = 'none';
+
+                    // Enable answer buttons and add click event listeners
+                    answerButtons.forEach(button => {
+                        button.addEventListener('click', handleAnswerClick);
+                    });
+                } else {
+                    // All questions answered, show game over message
+                    questionTextElement.textContent = 'Game Over!';
+                    answerButtons.forEach(button => {
+                        button.style.display = 'none';
+                    });
+                    resultTextElement.textContent = `Your Score: ${score} / ${questions.length}`;
+                    nextButton.style.display = 'none';
+                }
+            }
+
+            // Initial display of the first question
+            displayQuestion();
+
+            // Add click event listener to Next Question button
+            nextButton.addEventListener('click', nextQuestion);
+
+            // Enable answer buttons and add click event listeners
+            answerButtons.forEach(button => {
+                button.addEventListener('click', handleAnswerClick);
+            });
+        }
+    </script>
+</body>
+</html>

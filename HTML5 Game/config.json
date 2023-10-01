@@ -1,0 +1,13 @@
+{
+    "textDisplay": "Your Question and Answer Game",
+    "imageAssets": {
+        "background": "assets/images/background.jpg",
+        "logo": "assets/images/logo.png"
+    },
+    "buttonColor": "#007ACC",
+    "audioEnabled": true,
+    "countdownEnabled": false,
+    "showCorrectAnswer": true,
+    "fullscreenEnabled": true,
+    "muteSound": false
+}

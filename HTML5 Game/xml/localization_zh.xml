@@ -1,0 +1,14 @@
+<localization>
+    <phrase key="welcome">欢迎来到游戏！</phrase>
+    <phrase key="correct">正确！</phrase>
+    <phrase key="wrong">错误。正确答案是：</phrase>
+    
+    <!-- Localized phrases for questions -->
+    
+    <phrase key="question1">问题 1：法国的首都是什么？</phrase>
+    <phrase key="question2">问题 2：太阳系中最大的行星是什么？</phrase>
+    <phrase key="question3">问题 3：谁写了戏剧《罗密欧与朱丽叶》？</phrase>
+    <phrase key="question4">问题 4：光合作用期间，植物从大气中吸收哪种气体？</phrase>
+    
+    <!-- Add more localized phrases for additional questions here -->
+</localization>

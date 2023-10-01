@@ -1,0 +1,14 @@
+<localization>
+    <phrase key="welcome">Welcome to the Game!</phrase>
+    <phrase key="correct">Correct!</phrase>
+    <phrase key="wrong">Wrong. The correct answer is:</phrase>
+    
+    <!-- Localized phrases for questions -->
+    
+    <phrase key="question1">Question 1: What is the capital of France?</phrase>
+    <phrase key="question2">Question 2: What is the largest planet in our solar system?</phrase>
+    <phrase key="question3">Question 3: Who wrote the play "Romeo and Juliet"?</phrase>
+    <phrase key="question4">Question 4: Which gas do plants absorb from the atmosphere during photosynthesis?</phrase>
+    
+    <!-- Add more localized phrases for additional questions here -->
+</localization>

@@ -1,0 +1,45 @@
+<questions>
+    <question>
+        <questionText>What is the capital of France?</questionText>
+        <answers>
+            <answer>London</answer>
+            <answer>Berlin</answer>
+            <answer>Paris</answer>
+            <answer>Madrid</answer>
+        </answers>
+        <correctAnswer>Paris</correctAnswer>
+    </question>
+    <!-- Add more questions here -->
+
+    <question>
+        <questionText>What is the largest planet in our solar system?</questionText>
+        <answers>
+            <answer>Venus</answer>
+            <answer>Earth</answer>
+            <answer>Jupiter</answer>
+            <answer>Mars</answer>
+        </answers>
+        <correctAnswer>Jupiter</correctAnswer>
+    </question>
+    <question>
+        <questionText>Who wrote the play "Romeo and Juliet"?</questionText>
+        <answers>
+            <answer>Charles Dickens</answer>
+            <answer>William Shakespeare</answer>
+            <answer>Jane Austen</answer>
+            <answer>F. Scott Fitzgerald</answer>
+        </answers>
+        <correctAnswer>William Shakespeare</correctAnswer>
+    </question>
+    <question>
+        <questionText>Which gas do plants absorb from the atmosphere during photosynthesis?</questionText>
+        <answers>
+            <answer>Oxygen</answer>
+            <answer>Nitrogen</answer>
+            <answer>Carbon dioxide</answer>
+            <answer>Hydrogen</answer>
+        </answers>
+        <correctAnswer>Carbon dioxide</correctAnswer>
+    </question>
+    <!-- Add more questions here -->
+</questions>

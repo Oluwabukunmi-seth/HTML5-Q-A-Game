@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question and Answer Editor</title>
+    <link rel="stylesheet" href="css/editor-styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Question and Answer Editor</h1>
+        <form id="editorForm">
+            <div class="form-group">
+                <label for="questionTextarea">Question:</label>
+                <textarea id="questionTextarea" rows="4" cols="50" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="answersTextarea">Answers (one per line):</label>
+                <textarea id="answersTextarea" rows="4" cols="50" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="correctAnswerInput">Correct Answer:</label>
+                <input type="text" id="correctAnswerInput" required>
+            </div>
+            <button type="button" id="addQuestionButton">Add Question</button>
+        </form>
+        <hr>
+        <h2>Question List</h2>
+        <ul id="questionList">
+            <!-- Question items will be dynamically added here -->
+        </ul>
+    </div>
+
+    <script src="js/editor.js"></script>
+</body>
+</html>
